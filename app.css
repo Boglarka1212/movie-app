@@ -33,21 +33,6 @@ main {
   padding: 2rem;
 }
 
-.counter-box {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  padding: 3rem;
-  border-radius: 20px;
-  text-align: center;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  max-width: 500px;
-  width: 100%;
-}
-
-.counter-box h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
 
 .instructions {
   font-size: 0.95rem;
@@ -55,10 +40,6 @@ main {
   margin-bottom: 2rem;
 }
 
-.count-display {
-  font-size: 1.5rem;
-  margin-bottom: 2rem;
-}
 
 button:active {
   transform: translateY(0);
