@@ -2,16 +2,6 @@
 
 console.log("Movie App - DAG 2 starter...");
 
-/* const movie = {
-  title: "Inception",
-  year: 2010,
-  rating: 8.8,
-}; */
-
-/* console.log("Titel:", movie.title);
-console.log("År:", movie.year);
-console.log("Rating:", movie.rating); */
-
 const movies = [
   {
     title: "Inception",
@@ -23,15 +13,36 @@ const movies = [
     year: 1999,
     rating: 8.7,
   },
+  {
+    title: "Interstellar",
+    year: 2014,
+    rating: 8.6,
+  },
+  {
+    title: "The Dark Knight",
+    year: 2008,
+    rating: 9.0,
+  },
 ];
 
-console.log("Første film:", movies[0]);
-console.log("Anden film:", movies[1]);
-console.log("alle film:", movies.length);
+console.log("Alle film:", movies);
+console.log("antal film:", movies.length);
+
+const movieList = document.querySelector("#movie-list");
+console.log(movieList);
 
 
 for (const movie of movies) {
-    console.log("titel:", movie.title);
-    console.log("rating:", movie.rating);
+    const html = /* html */ `
+        <article class="movie-card">
+        <div class="movie-info">
+            <h3>${movie.title}</h3>
+            <p>År: ${movie.year}</p>
+            <p>Rating: ${movie.rating}</p>
+        </div>
+        </article>
+    `;
+
+    movieList.insertAdjacentHTML("beforeend", html);
     
 }
