@@ -7,7 +7,6 @@ const movies = [
   "The Matrix",
   "Interstellar",
   "The Dark Knight",
-  "Pulp Fiction",
 ];
 
 /* console.log("Alle film:", movies);
