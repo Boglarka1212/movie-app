@@ -9,6 +9,7 @@ const movies = [
     rating: 8.8,
     image:
       "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_.jpg",
+    genre: "Sci-fi",
   },
   {
     title: "The Matrix",
@@ -79,6 +80,7 @@ function showMovie(movie) {
         <h3>${movie.title}</h3>
         <p>År: ${movie.year}</p>
         <p>Rating: ${movie.rating}</p>
+        <p>Genre: ${movie.genre}</p>
       </div>
     </article>
   `;
@@ -95,3 +97,17 @@ movies.push({
 });
 
 showMovies();
+
+function addMovie(movie) {
+  movies.push(movie);
+  showMovies();
+}
+
+addMovie({
+  title: "Blade Runner 2049",
+  year: 2017,
+  rating: 8.0,
+  image: "https://m.media-amazon.com/images/I/91z+H6z7A2L._AC_SL1500_.jpg",
+  genre: "Sci-fi",
+});
+

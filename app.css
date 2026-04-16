@@ -57,7 +57,7 @@ button:active {
 .movie-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
+  gap: 3rem;
   padding: 2rem 0;
 }
 
