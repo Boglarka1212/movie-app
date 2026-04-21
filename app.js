@@ -6,6 +6,7 @@ const MOVIES_URL =
 let allMovies = [];
 const movieList = document.querySelector("#movie-list");
 const genreSelect = document.querySelector("#genre-select");
+const movieCount = document.querySelector("#movie-count");
 
 fetchMovies();
 
@@ -19,7 +20,6 @@ async function fetchMovies() {
   genreSelect.addEventListener("change", applyGenreFilter);
 }
 
-
 function populateGenreSelect() {
   const genres = new Set();
 
@@ -29,11 +29,10 @@ function populateGenreSelect() {
     }
   }
 
-
   const sortedGenres = [...genres].sort((a, b) => a.localeCompare(b));
 
   for (const genre of sortedGenres) {
-    genreSelect.insertAdjacentHTML (
+    genreSelect.insertAdjacentHTML(
       "beforeend",
       `<option value="${genre}">${genre}</option>`,
     );
@@ -55,13 +54,13 @@ function applyGenreFilter() {
   showMovies(filteredMovies);
 }
 
-
-
 function showMovies(movies) {
   movieList.innerHTML = "";
 
   for (const movie of movies) {
     showMovie(movie);
+
+      movieCount.textContent = `Viser ${movies.length} film`;
   }
 }
 
