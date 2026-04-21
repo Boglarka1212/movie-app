@@ -10,34 +10,11 @@ const movieList = document.querySelector("#movie-list");
 fetchMovies();
 
 async function fetchMovies() {
-
   const response = await fetch(MOVIES_URL);
   allMovies = await response.json();
 
-  console.log("Hentet", allMovies.length, "film!");
-
-  const newMovies = allMovies.filter(function (movie) {
-    return movie.year >= 2010;
-  });
-
-  console.log("Film fra 2010+:", newMovies.length);
-  console.log("nye film", newMovies);
-
-
-  const selectedGenre = "Action";
-
-  const filteredMovies = allMovies.filter(function (movie) {
-    return movie.genre.includes(selectedGenre);
-  });
-
-  console.log("valgt genre:", selectedGenre);
-  console.log("antal film i genren", filteredMovies.length);
-  
-  
-
   showMovies(allMovies);
 }
-
 
 function showMovies(movies) {
   movieList.innerHTML = "";
@@ -66,5 +43,3 @@ function formatMovieTitle(title, year) {
 }
 
 console.log(formatMovieTitle("Inception", 2010));
-
-
