@@ -23,6 +23,18 @@ async function fetchMovies() {
   console.log("Film fra 2010+:", newMovies.length);
   console.log("nye film", newMovies);
 
+
+  const selectedGenre = "Action";
+
+  const filteredMovies = allMovies.filter(function (movie) {
+    return movie.genre.includes(selectedGenre);
+  });
+
+  console.log("valgt genre:", selectedGenre);
+  console.log("antal film i genren", filteredMovies.length);
+  
+  
+
   showMovies(allMovies);
 }
 
