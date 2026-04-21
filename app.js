@@ -10,19 +10,22 @@ const movieList = document.querySelector("#movie-list");
 fetchMovies();
 
 async function fetchMovies() {
-  console.log("Henter film data...");
 
   const response = await fetch(MOVIES_URL);
   allMovies = await response.json();
 
   console.log("Hentet", allMovies.length, "film!");
-  console.log("Første film:", allMovies[0]);
-  console.log("Alle film:", allMovies);
+
+  const newMovies = allMovies.filter(function (movie) {
+    return movie.year >= 2010;
+  });
+
+  console.log("Film fra 2010+:", newMovies.length);
+  console.log("nye film", newMovies);
 
   showMovies(allMovies);
 }
 
-showMovies(movies);
 
 function showMovies(movies) {
   movieList.innerHTML = "";
@@ -51,3 +54,5 @@ function formatMovieTitle(title, year) {
 }
 
 console.log(formatMovieTitle("Inception", 2010));
+
+
