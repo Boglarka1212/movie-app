@@ -6,6 +6,8 @@ const MOVIES_URL =
 let allMovies = [];
 const movieList = document.querySelector("#movie-list");
 const genreSelect = document.querySelector("#genre-select");
+const searchInput = document.querySelector("#search-input");
+
 const movieCount = document.querySelector("#movie-count");
 
 fetchMovies();
@@ -15,9 +17,10 @@ async function fetchMovies() {
   allMovies = await response.json();
 
   populateGenreSelect();
-  showMovies(allMovies);
+  applyFilters();
 
-  genreSelect.addEventListener("change", applyGenreFilter);
+  genreSelect.addEventListener("change", applyFilters);
+  searchInput.addEventListener("input", applyFilters);
 }
 
 function populateGenreSelect() {
@@ -39,16 +42,16 @@ function populateGenreSelect() {
   }
 }
 
-function applyGenreFilter() {
+function applyFilters() {
   const selectedGenre = genreSelect.value;
-
-  if (selectedGenre === "all") {
-    showMovies(allMovies);
-    return;
-  }
+  const searchValue = searchInput.value.trim().toLowerCase();
 
   const filteredMovies = allMovies.filter(function (movie) {
-    return movie.genre.includes(selectedGenre);
+    const matchesGenre =
+      selectedGenre === "all" || movie.genre.includes(selectedGenre);
+    const matchesSearch = movie.title.toLowerCase().includes(searchValue);
+
+    return matchesGenre && matchesSearch;
   });
 
   showMovies(filteredMovies);
@@ -60,7 +63,7 @@ function showMovies(movies) {
   for (const movie of movies) {
     showMovie(movie);
 
-      movieCount.textContent = `Viser ${movies.length} film`;
+    movieCount.textContent = `Viser ${movies.length} film`;
   }
 }
 
