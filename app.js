@@ -106,10 +106,38 @@ function showMovie(movie) {
   `;
 
   movieList.insertAdjacentHTML("beforeend", html);
+
+  const newCard = movieList.lastElementChild;
+  newCard.addEventListener("click", function() {
+    showMovieDialog(movie);
+  });
+  newCard.addEventListener("keydown", function (event) {
+    if (event.ked === "Enter") {
+      showMovieDialog(movie);
+    }
+  });
+  
 }
 
 function formatMovieTitle(title, year) {
   return `${title} (${year})`;
 }
 
-console.log(formatMovieTitle("Inception", 2010));
+function showMovieDialog(movie) {
+  const dialog = document.querySelector("#movie-dialog");
+  const dialogContent = document.querySelector("#dialog-content");
+
+   dialogContent.innerHTML = /* html */ `
+    <img src="${movie.image}" alt="Poster af ${movie.title}" class="movie-poster">
+    <div class="dialog-details">
+      <h2>${movie.title} <span class="movie-year">(${movie.year})</span></h2>
+      <p class="movie-genre">${movie.genre.join(", ")}</p>
+      <p class="movie-rating">⭐ ${movie.rating}</p>
+      <p><strong>Instruktør:</strong> ${movie.director}</p>
+      <p><strong>Skuespillere:</strong> ${movie.actors.join(", ")}</p>
+      <p class="movie-description">${movie.description}</p>
+    </div>
+  `;
+
+  dialog.showModal();
+}
